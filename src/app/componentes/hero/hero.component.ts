@@ -13,9 +13,8 @@ export class HeroComponent implements OnInit {
   constructor (private datos:ExtraerDatosService) {}
 
   ngOnInit(): void {
-      this.datos.obtenerDatosPersona().subscribe(dato => {
-        console.log("Datos usuario: " + JSON.stringify(dato));
-        this.yo = dato;
-      });
+    this.datos.obtenerDatosPersona().subscribe(dato => {
+      this.yo = dato;
+    });
   }
 }

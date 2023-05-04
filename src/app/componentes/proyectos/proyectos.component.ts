@@ -13,10 +13,7 @@ export class ProyectosComponent implements OnInit{
   constructor (private datos : ExtraerDatosService) {}
 
   ngOnInit(): void {
-      
-    this.datos.obtenerDatosProyectos().subscribe(dato => {
-      this.logo = dato.img.portfolio;
-    });
+  
   }
 
 }

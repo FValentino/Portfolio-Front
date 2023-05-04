@@ -13,9 +13,6 @@ export class TecnologiasComponent implements OnInit{
   constructor(private datos : ExtraerDatosService) {}
 
   ngOnInit(): void {
-      this.datos.obtenerDatosTecnologias().subscribe(dato => {
-        this.technologies = dato.img.technologies;
-      });
   }
 
 }

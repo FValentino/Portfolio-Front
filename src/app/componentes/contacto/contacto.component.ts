@@ -23,11 +23,12 @@ export class ContactoComponent {
   }
 
   ngOnInit(): void {
-      this.datos.obtenerDatosPersona().subscribe(dato => {
-        console.log("Datos usuario: " + JSON.stringify(dato));
-
-        this.contacto = dato;
-      });
+    this.datos.obtenerDatosPersona().subscribe(dato => {
+      this.contacto = dato;
+      console.log("LOCALIZACION: " + this.contacto.localizacion);
+      console.log("EMAIL: " + this.contacto.email);
+      console.log("TELEFONO: " + this.contacto.telefono);
+    });
   }
 
 }
