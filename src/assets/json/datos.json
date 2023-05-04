@@ -1,0 +1,27 @@
+{
+    "yo":{
+        "nombre":"Valentino Farias",
+        "ocupacion":"Full-Stack Developer",
+        "descripcion":"I enjoy development because of the satisfaction I get from overcoming challenges and being able to continually improve my skills.",
+        "cv":"assets/cv/Valentino Farias - CV.pdf",
+        "contacto":{
+            "localizacion":"Resistencia-Chaco, Argentina",
+            "email":"fariasvalentino25@gmail.com",
+            "tel":"362 4386060"
+        }
+    },
+    "img":{
+        "profile":"assets/img/profile.png",
+        "technologies":{
+            "html":"assets/img/technologies/html.png",
+            "css":"assets/img/technologies/css.png",
+            "js":"assets/img/technologies/js.png",
+            "angular":"assets/img/technologies/angular.png",
+            "sql":"assets/img/technologies/sql.png",
+            "java":"assets/img/technologies/java.png"
+        },
+        "portfolio":{
+            "project1":"assets/img/icono-pag.png"
+        }
+    }
+}
