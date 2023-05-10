@@ -8,10 +8,11 @@ import { map } from 'rxjs';
 })
 export class AutenticacionService {
 
-urlInicio:string = "http://localhost:8080/portfolio/usuario/iniciar-sesion";
+  urlInicio:string = "http://localhost:8080/portfolio/usuario/iniciar-sesion";
+  urlCerrar:string = "http://localhost:8080/portfolio/usuario/cerrar-sesion";
 
 
-userSubject: BehaviorSubject<any>;
+  userSubject: BehaviorSubject<any>;
 
   constructor(private http : HttpClient ) { 
     this.userSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
@@ -31,8 +32,17 @@ userSubject: BehaviorSubject<any>;
     }));
   }
 
-  cerrarSesion(){
-    sessionStorage.removeItem('currentUser');
-    this.userSubject.closed;
+  cerrarSesion (): Observable <any>{
+    return this.http.post(this.urlCerrar, null).pipe(map(data=>{
+      
+      sessionStorage.setItem('currentUser', JSON.stringify(data));
+      this.userSubject.next(data);
+    
+      return data;
+    }));
+  }
+
+  recargar() : void{
+    window.location.reload();
   }
 }

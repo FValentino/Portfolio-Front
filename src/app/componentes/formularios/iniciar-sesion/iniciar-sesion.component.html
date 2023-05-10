@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<section class="contenedor bg-formularios">
+  <div class="section-title mt-5">
+    <h1>INICIAR SESION</h1>
+  </div>
+  <div *ngIf="alerta" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Usuario incorrecto!</strong> Algun dato se ingreso de forma incorrecta
+  </div>
+
+
+  <div class="container">
+    <form [formGroup]="form" class="m-3" (ngSubmit)="onEnviar($event)">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" formControlName="email" (click)="closeAlerta()" 
+        [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 
+        'is-valid':!Email?.errors && Email?.touched}"
+        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div *ngIf="Email?.errors && Email?.touched">
+          <p *ngIf="Email?.hasError('required')" class="text-danger">
+            Email requerido
+          </p>
+          <p *ngIf="Email?.hasError('email')" class="text-danger">
+            Email no valido
+          </p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" formControlName="password" (click)="closeAlerta()"
+        [ngClass]="{'is-invalid':Password?.errors && Password?.touched,
+        'is-valid':!Password?.errors && Password?.touched}"
+        class="form-control" id="exampleInputPassword1">
+        <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')">
+            Contraseña requerida
+          </p>
+          <p *ngIf="Password?.hasError('minLength')">
+            La contraseña ingresada es muy corta
+          </p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+  </div>
+</section>

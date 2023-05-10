@@ -425,6 +425,23 @@ text-align: center;
 padding-bottom: 30px;
 }
 
+.section-title h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #124265;
+}
+
+.section-title h2 {
+font-size: 32px;
+font-weight: bold;
+text-transform: uppercase;
+margin-bottom: 20px;
+padding-bottom: 0;
+color: #124265;
+}
+
 .section-title h2 {
 font-size: 32px;
 font-weight: bold;
@@ -449,16 +466,20 @@ text-align: center;
 }
 
 /*--------------------------------------------------------------
-# Techonologies
+# Img
 --------------------------------------------------------------*/
 
-#technologies .img{
-width: 100px;
-height: 100px;
+.containerImg{
+    width: 800px;
 }
 
-#technologies .technologies-item{
-width: 200px;
+.img{
+    width: 100px;
+    height: 100px;
+}
+
+.Img-item{
+    width: 200px;
 }
 
 
@@ -674,3 +695,20 @@ content: "/";
     display: inline-block;
 }
 }
+
+/*--------------------------------------------------------------
+# Formularios de ingreso
+--------------------------------------------------------------*/
+
+.bg-formularios{
+    background-image: url("assets/img/hero-bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor{
+    height: 100vh;
+}
+

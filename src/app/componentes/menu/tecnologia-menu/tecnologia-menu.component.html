@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<section class="bg-formularios">    
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Tecnologia</h2>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+            <div class="row justify-content-center">
+                <div class="containerImg d-flex flex-wrap justify-content-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tecnologias">
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.nombre}}</td>
+                                <td><a href="#">editar</a></td>
+                                <td><a href="#">eliminar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="mt-5 text-center">
+                            <a routerLink="/agregar-tecnologia" class="btn btn-primary">AGREGAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

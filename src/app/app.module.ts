@@ -14,8 +14,12 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { TecnologiasComponent } from './componentes/tecnologias/tecnologias.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
-import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
-
+import { IniciarSesionComponent } from './componentes/formularios/iniciar-sesion/iniciar-sesion.component';
+import { DatosPersonalesComponent } from './componentes/formularios/datos-personales/datos-personales.component';
+import { AgregarTecnologiaComponent } from './componentes/formularios/agregar-tecnologia/agregar-tecnologia.component';
+import { AgregarEducacionComponent } from './componentes/formularios/agregar-educacion/agregar-educacion.component';
+import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educacion-menu.component';
+import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
 
 //Formulario
 import { ReactiveFormsModule} from '@angular/forms';
@@ -37,7 +41,12 @@ import { InterceptorService } from './servicios/interceptor.service';
     PortfolioComponent,
     IniciarSesionComponent,
     ContactoComponent,
-    EducacionComponent
+    EducacionComponent,
+    DatosPersonalesComponent,
+    AgregarTecnologiaComponent,
+    AgregarEducacionComponent,
+    EducacionMenuComponent,
+    TecnologiaMenuComponent
   ],
   imports: [
     BrowserModule,
