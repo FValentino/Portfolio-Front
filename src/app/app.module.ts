@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,11 +15,12 @@ import { ProyectosComponent } from './componentes/proyectos/proyectos.component'
 import { TecnologiasComponent } from './componentes/tecnologias/tecnologias.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { IniciarSesionComponent } from './componentes/formularios/iniciar-sesion/iniciar-sesion.component';
-import { DatosPersonalesComponent } from './componentes/formularios/datos-personales/datos-personales.component';
-import { AgregarTecnologiaComponent } from './componentes/formularios/agregar-tecnologia/agregar-tecnologia.component';
-import { AgregarEducacionComponent } from './componentes/formularios/agregar-educacion/agregar-educacion.component';
+import { DatosPersonalesComponent } from './componentes/formularios/editar/datos-personales/datos-personales.component';
+import { AgregarTecnologiaComponent } from './componentes/formularios/agregar/agregar-tecnologia/agregar-tecnologia.component';
+import { AgregarEducacionComponent } from './componentes/formularios/agregar/agregar-educacion/agregar-educacion.component';
 import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educacion-menu.component';
 import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
+import { EditarTecnologiaComponent } from './componentes/formularios/editar/editar-tecnologia/editar-tecnologia.component';
 
 //Formulario
 import { ReactiveFormsModule} from '@angular/forms';
@@ -28,6 +29,9 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { CargarScriptService } from './servicios/cargar-script.service';
 import { ExtraerDatosService } from './servicios/extraer-datos.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -46,17 +50,21 @@ import { InterceptorService } from './servicios/interceptor.service';
     AgregarTecnologiaComponent,
     AgregarEducacionComponent,
     EducacionMenuComponent,
-    TecnologiaMenuComponent
+    TecnologiaMenuComponent,
+    EditarTecnologiaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [CargarScriptService, ExtraerDatosService, 
     {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

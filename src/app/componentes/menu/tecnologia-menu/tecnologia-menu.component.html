@@ -21,8 +21,8 @@
                             <tr *ngFor="let item of tecnologias">
                                 <th scope="row">{{item.id}}</th>
                                 <td>{{item.nombre}}</td>
-                                <td><a href="#">editar</a></td>
-                                <td><a href="#">eliminar</a></td>
+                                <td> <a [routerLink]="['/tecnologia', item.id]" >editar</a> </td>
+                                <td> <button class="btn btn-link" (click)="borrarRegistro(item)" >Borrar</button> </td>
                             </tr>
                         </tbody>
                     </table>
