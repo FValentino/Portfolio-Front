@@ -32,6 +32,7 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AgregarEducacionComponent,
     EducacionMenuComponent,
     TecnologiaMenuComponent,
-    EditarTecnologiaComponent
+    EditarTecnologiaComponent,
+    EditarEducacionComponent
   ],
   imports: [
     BrowserModule,

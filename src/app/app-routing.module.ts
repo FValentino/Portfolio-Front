@@ -8,6 +8,7 @@ import { AgregarEducacionComponent } from './componentes/formularios/agregar/agr
 import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educacion-menu.component';
 import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
 import { EditarTecnologiaComponent } from './componentes/formularios/editar/editar-tecnologia/editar-tecnologia.component';
+import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
 
 const routes: Routes = [
   {path:'portfolio', component:PortfolioComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'educacion', component: EducacionMenuComponent},
   {path:'tecnologia', component: TecnologiaMenuComponent},
   {path:'tecnologia/:id', component: EditarTecnologiaComponent},
+  {path:'educacion/:id', component: EditarEducacionComponent},
   {path:'', redirectTo:'portfolio', pathMatch:'full'}
 ];
 

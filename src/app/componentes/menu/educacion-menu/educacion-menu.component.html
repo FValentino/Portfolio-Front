@@ -16,8 +16,6 @@
                                 <th scope="col">Titulo</th>
                                 <th scope="col">Inicio</th>
                                 <th scope="col">Finalizacion</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,8 +25,8 @@
                                 <td>{{item.titulo}}</td>
                                 <td>{{item.fechaInicio}}</td>
                                 <td>{{item.fechaFin}}</td>
-                                <td><a href="#">editar</a></td>
-                                <td><a href="#">eliminar</a></td>
+                                <td> <a [routerLink]="['/educacion', item.id] " >editar</a> </td>
+                                <td> <button class="btn btn-link" (click)="borrarRegistro(item)" >Borrar</button> </td>
                             </tr>
                         </tbody>
                     </table>

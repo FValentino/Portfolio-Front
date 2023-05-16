@@ -31,15 +31,16 @@ export class AgregarTecnologiaComponent {
     this.imagenes.cargarImagen(event, 'tecnologias', this.NombreValue);
   } 
 
-  onEnviar(){
+  onEnviar(event : any){
+
+    event.preventDefault();
+
     this.form.patchValue({
       urlImagen : this.imagenes.url
     });
 
-    console.log("DATOS SERVIDOR: ", this.form.value);
-
     this.crud.onEnviar(this.form.value).subscribe(data => {
-      console.log("SE ENVIO AL SERVIDOR: ", data);
+      this.crud.recargar();
     });
 
   }

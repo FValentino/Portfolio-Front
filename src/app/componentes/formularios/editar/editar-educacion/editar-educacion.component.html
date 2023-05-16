@@ -5,10 +5,11 @@
         <div class="section-title">
             <h1> DATOS PERSONALES </h1>
         </div>
-        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+        <form [formGroup]="form" (ngSubmit)="actualizarRegistro($event)">
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
                 <input type="text" formControlName="nombre" maxlength="50"
+                [value]="educacion.nombre"
                 [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched, 
                     'is-valid':!Nombre?.errors && Nombre?.touched}"
                 class="form-control">
@@ -21,6 +22,7 @@
             <div class="mb-3">
                 <label class="form-label">Titulo</label>
                 <input type="text" formControlName="titulo" maxlength="50"
+                [value]="educacion.titulo"
                 [ngClass]="{'is-invalid':Titulo?.errors && Titulo?.touched, 
                     'is-valid':!Titulo?.errors && Titulo?.touched}"
                 class="form-control">
@@ -33,6 +35,7 @@
             <div class="mb-3">
                 <label class="form-label">Fecha de Inicio</label>
                 <input type="date" formControlName="fechaInicio" maxlength="10"
+                [value]="fechaInicio"
                 [ngClass]="{'is-invalid':FechaInicio?.errors && FechaInicio?.touched, 
                     'is-valid':!FechaInicio?.errors && FechaInicio?.touched}"
                 class="form-control">
@@ -45,6 +48,7 @@
             <div class="mb-3">
                 <label class="form-label">Fecha de Fin</label>
                 <input type="date" formControlName="fechaFin" maxlength="10"
+                [value]="educacion.fechaFin"
                 [ngClass]="{'is-invalid':FechaFin?.errors && FechaFin?.touched, 
                     'is-valid':!FechaFin?.errors && FechaFin?.touched}"
                 class="form-control">
@@ -59,7 +63,7 @@
                 <input type="file" accept=".jpg, .jpeg, .png" 
                 class="form-control col" (change)="cargarImagen($event)">
             </div>
-            <div class="text-center mt-2" [style.visibility]="previsualizacionVis ? 'visible' : 'hidden'">
+            <div class="text-center mt-2">
                 <div>
                     <img [src]="previsualizacionUrl"
                     class="img img-fluid rounded border border-dark" id="imagen" alt="">
@@ -73,5 +77,3 @@
         </form>
     </div>
 </section>
-
-
