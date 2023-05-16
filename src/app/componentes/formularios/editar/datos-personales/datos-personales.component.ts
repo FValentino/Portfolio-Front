@@ -14,7 +14,7 @@ import { CRUDPersonaService } from 'src/app/servicios/crud-persona.service';
 export class DatosPersonalesComponent implements OnInit{
 
   persona : any;
-  previsualizacionUrl : string = "";
+  previsUrl : string = "";
 
   constructor(private extraerDatos : ExtraerDatosService, private crud : CRUDPersonaService, 
     private imagen : ImagenesService, private sanitizer : DomSanitizer,
@@ -28,7 +28,7 @@ export class DatosPersonalesComponent implements OnInit{
   ngOnInit(): void {
     this.crud.onBuscar().subscribe(dato => {
       this.persona = dato;
-      this.previsualizacionUrl = this.persona.urlImagen;
+      this.previsUrl = this.persona.urlImagen;
 
       console.log("DATOS PERSONA: ", this.persona);
       
@@ -91,7 +91,7 @@ export class DatosPersonalesComponent implements OnInit{
   private previsualizacion (event : any){
     const imagen = event.target.files[0];
     this.extraerBase64(imagen).then(( img : any )=>{
-      this.previsualizacionUrl = img.base;
+      this.previsUrl = img.base;
     });
   }
 
