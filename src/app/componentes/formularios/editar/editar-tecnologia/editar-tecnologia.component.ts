@@ -15,7 +15,6 @@ export class EditarTecnologiaComponent implements OnInit{
   private id : any;
   previsualizacionUrl : string = "";
   tecnologia : any;
-  datosEnviar : any;
   enviar : boolean = true;
   
   constructor(private crud : CRUDTecnologiaService, private route : ActivatedRoute, 
@@ -61,12 +60,10 @@ export class EditarTecnologiaComponent implements OnInit{
       urlImagen : this.imagen.url
     });
 
-    this.crud.onActualizar(this.id , this.form.value).subscribe();
-    console.log("DATOS A ENVIAR: ", this.datosEnviar);
+    this.crud.onActualizar(this.id , this.form.value).subscribe(data => {
+      this.crud.recargar();
+    });
   }
-
-  cancelar(){}
-
 
   get Nombre (){
     return this.form.get("nombre");

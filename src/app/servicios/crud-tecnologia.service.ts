@@ -20,9 +20,9 @@ export class CRUDTecnologiaService {
     return this.http.delete(this.url + "/borrar?id=" + id);
   }
 
-  onActualizar(id : any, tecnologia : any) : Observable <any>{
+  onActualizar(id : any, persona : any) : Observable <any>{
     
-    return this.http.put(this.url + "/editar/" + id, tecnologia);
+    return this.http.put(this.url + "/editar/" + id, persona);
   }
 
   onBuscar(id : any){

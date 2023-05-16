@@ -24,7 +24,7 @@
                 <input type="file" accept=".jpg, .jpeg, .png" (change)="cargarImagen($event)"
                 class="form-control col">
             </div>
-            <div class="text-center">
+            <div class="text-center mt-2">
                 <div>
                     <img [src]="previsualizacionUrl" class="img img-fluid rounded border border-dark" id="imagen" alt="">
                 </div>
@@ -33,7 +33,6 @@
                 <button type="submit" class="btn btn-primary me-3" [disabled]="!enviar">
                     Guardar
                 </button>
-                <button class="btn btn-primary" (click)="cancelar()">Cancelar</button>
             </div>
         </form>
     </div>

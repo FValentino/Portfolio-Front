@@ -26,7 +26,6 @@ export class ImagenesService {
     const fileref = ref(this.storage, 'imagenes/' + carpeta + "/" +nombre);
     getDownloadURL(fileref).then(url => {
       this.url = url;
-      
     }).catch((e) => {
       console.log("Error al cargar imagen: " + e);
     });

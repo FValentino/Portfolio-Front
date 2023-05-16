@@ -5,41 +5,110 @@
         <div class="section-title">
             <h1> DATOS PERSONALES </h1>
         </div>
-        <form>
+        <form [formGroup]="form" (ngSubmit)="actualizarRegistro($event)">
             <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input type="text" [value]="persona.nombre" class="form-control" disabled>
+                <label class="form-label">Nombre</label> 
+                <input type="text" [value]="persona.nombre" formControlName="nombre" maxlength="100"
+                [ngClass]="{'is-invalid':Nombre?.errors && Nombre?.touched, 
+                    'is-valid':!Nombre?.errors && Nombre?.touched}"
+                class="form-control" [disabled]="true">
+                <div *ngIf="Nombre?.errors && Nombre?.touched">
+                    <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                        Nombre requerido
+                    </p>
+                </div>
             </div>
             <div class="mb-3">
-            <label class="form-label">Apellido</label>
-            <input type="text" [value]="persona.apellido" class="form-control" disabled>
+                <label class="form-label">Apellido</label>
+                <input type="text" [value]="persona.apellido" formControlName="apellido" maxlength="100"
+                [ngClass]="{'is-invalid':Apellido?.errors && Apellido?.touched, 
+                    'is-valid':!Apellido?.errors && Apellido?.touched}"
+                class="form-control" [disabled]="true">
+                <div *ngIf="Apellido?.errors && Apellido?.touched">
+                    <p *ngIf="Apellido?.hasError('required')" class="text-danger">
+                      Apellido requerido
+                    </p>
+                </div>
             </div>
+
             <div class="mb-3">
                 <label class="form-label">Ocupacion</label>
-                <input type="text" [value]="persona.ocupacion" class="form-control">
+                <input type="text" [value]="persona.ocupacion" formControlName="ocupacion" maxlength="100"
+                [ngClass]="{'is-invalid':Ocupacion?.errors && Ocupacion?.touched, 
+                    'is-valid':!Ocupacion?.errors && Ocupacion?.touched}"
+                class="form-control">
+                <div *ngIf="Ocupacion?.errors && Ocupacion?.touched">
+                    <p *ngIf="Ocupacion?.hasError('required')" class="text-danger">
+                        Ocupacion requerido
+                    </p>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" [value]="persona.email" class="form-control">
+                <input type="text" [value]="persona.email" formControlName="email" maxlength="150"
+                [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 
+                    'is-valid':!Email?.errors && Email?.touched}"
+                class="form-control">
+                <div *ngIf="Email?.errors && Email?.touched">
+                    <p *ngIf="Email?.hasError('required')" class="text-danger">
+                        Email requerido
+                    </p>
+                    <p *ngIf="Email?.hasError('email')" class="text-danger">
+                        Email invalido
+                    </p>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Telefono</label>
-                <input type="tel" [value]="persona.telefono" class="form-control">
+                <input type="tel" [value]="persona.telefono" formControlName="telefono" maxlength="100"
+                [ngClass]="{'is-invalid':Telefono?.errors && Telefono?.touched, 
+                    'is-valid':!Telefono?.errors && Telefono?.touched}"
+                class="form-control">
+                <div *ngIf="Telefono?.errors && Telefono?.touched">
+                    <p *ngIf="Telefono?.hasError('required')" class="text-danger">
+                        Telefono requerido
+                    </p>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Localizacion</label>
-                <input type="text" [value]="persona.localizacion" class="form-control">
+                <input type="text" [value]="persona.localizacion" formControlName="localizacion" maxlength="100"
+                [ngClass]="{'is-invalid':Localizacion?.errors && Localizacion?.touched, 
+                    'is-valid':Localizacion?.errors && Localizacion?.touched}"
+                class="form-control">
+                <div *ngIf="Localizacion?.errors && Localizacion?.touched">
+                    <p *ngIf="Localizacion?.hasError('required')" class="text-danger">
+                        Localizacion requerido
+                    </p>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Descripcion</label>
-                <input type="text" [value]="persona.descripcion" class="form-control">
+                <input type="text" [value]="persona.descripcion" formControlName="descripcion" maxlength="100"
+                [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched, 
+                    'is-valid':!Descripcion?.errors && Descripcion?.touched}"
+                class="form-control">
+                <div *ngIf="Descripcion?.errors && Descripcion?.touched">
+                    <p *ngIf="Descripcion?.hasError('required')" class="text-danger">
+                        Descripcion requerido
+                    </p>
+                </div>
             </div>  
             <div class="mb-3">
                 <label class="form-label">Imagen</label>
-                <input type="file" class="form-control col">
+                <input type="file" accept=".jpg, .jpeg, .png" (change)="cargarImagen($event)"
+                class="form-control col">
             </div>  
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+            <div class="text-center mt-2">
+                <div>
+                    <img [src]="previsualizacionUrl" class="img img-fluid rounded border border-dark" 
+                    id="imagen" alt="">
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary me-3">
+                    Guardar
+                </button>
             </div>
         </form>
     </div>
