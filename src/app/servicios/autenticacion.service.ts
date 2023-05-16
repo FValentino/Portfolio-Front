@@ -8,8 +8,8 @@ import { map } from 'rxjs';
 })
 export class AutenticacionService {
 
-  urlInicio:string = "http://localhost:8080/portfolio/usuario/iniciar-sesion";
-  urlCerrar:string = "http://localhost:8080/portfolio/usuario/cerrar-sesion";
+  urlInicio:string = "https://back-portfolio-cedh.onrender.com/portfolio/usuario/iniciar-sesion";
+  urlCerrar:string = "https://back-portfolio-cedh.onrender.com/portfolio/usuario/cerrar-sesion";
 
 
   userSubject: BehaviorSubject<any>;

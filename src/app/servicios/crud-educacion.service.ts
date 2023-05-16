@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CRUDEducacionService {
 
-  private url : string = "http://localhost:8080/portfolio/educacion";
+  private url : string = "https://back-portfolio-cedh.onrender.com/portfolio/educacion";
 
   constructor(private http : HttpClient) {}
 

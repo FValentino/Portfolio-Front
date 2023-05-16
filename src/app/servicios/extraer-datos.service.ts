@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ExtraerDatosService {
 
-  urlPersona : string = "http://localhost:8080/portfolio/persona"; 
-  urlTecnologia : string = "http://localhost:8080/portfolio/tecnologia";
-  urlEducacion : string = "http://localhost:8080/portfolio/educacion";
+  urlPersona : string = "https://back-portfolio-cedh.onrender.com/portfolio/persona"; 
+  urlTecnologia : string = "https://back-portfolio-cedh.onrender.com/portfolio/tecnologia";
+  urlEducacion : string = "https://back-portfolio-cedh.onrender.com/portfolio/educacion";
   
 
   constructor( private http : HttpClient) { }
