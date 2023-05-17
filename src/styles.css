@@ -59,6 +59,8 @@ opacity: 1;
 }
 
 
+
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -357,8 +359,8 @@ position: relative;
 background-image: url("assets/img/hero-bg.jpg");
 background-size: cover;
 background-attachment: fixed;
-width: 100%;
-height: 100%;
+width: 90%;
+height: 90%;
 position: absolute;
 z-index: -1;
 }
