@@ -26,31 +26,27 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-8 mt-5 mt-lg-0">
-            <form [formGroup]="form" class="email-form">
-              <div class="row gy-2 gx-md-3">
-                <div class="col-md-6 form-group">
-                  <input  type="text" name="name" class="form-control" id="name" placeholder="Your Name" formControlName="nombre">
-                </div>
-                <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" formControlName="email">
-                </div>
-                <div class="form-group col-12">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" formControlName="asunto">
-                </div>
-                <div class="form-group col-12">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" formControlName="mensaje"></textarea>
-                </div>
-                <div class="my-3 col-12">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-                <div class="text-center col-12">
-                  <button class="btn btn-primary">Send Message</button>
-                </div>
+          <div class="col-lg-4 ">
+            <div class="containerImg d-flex ms-3 pt-5">
+              <div class="Img-item text-center">
+                <a href="mailto:fariasvalentino25@gmail.com">
+                  <img class="img img-fluid rounded border border-dark" src="../../../assets/img/contacto/gmail.jpg" alt="">
+                  <p>Enviar mail</p>
+                </a>  
               </div>
-            </form>
+              <div class="Img-item text-center">
+                <a href="https://github.com/FValentino">
+                  <img class="img img-fluid rounded border border-dark"src="../../../assets/img/contacto/github.jpg" alt="">
+                  <p>Github</p>
+                </a> 
+              </div>
+              <div class="Img-item text-center">
+                <a href="https://www.linkedin.com/in/valentino-farias-808718244">
+                  <img class="img img-fluid rounded border border-dark" src="../../../assets/img/contacto/linkedin.jpg" alt="">
+                  <p>Linkedin</p>
+                </a> 
+              </div>
+            </div>
           </div>
         </div>
     </div>
