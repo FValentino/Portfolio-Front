@@ -8,7 +8,9 @@
           <div class="containerImg d-flex flex-wrap justify-content-center">
             <div *ngFor="let item of educacion" class="Img-item filter-app mt-4">
               <div class="text-center">
-                <img [src]="educacionUrl + item.imagen" class="img img-fluid rounded border border-dark" alt="">
+                <a [routerLink]="['/educacion', item.id] " >
+                  <img [src]="item.urlImagen" class="img img-fluid rounded border border-dark" alt="">
+                </a>
                 <h4>{{item.nombre}}</h4>
               </div>
             </div>
