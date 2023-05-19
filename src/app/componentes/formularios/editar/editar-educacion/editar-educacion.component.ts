@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CRUDEducacionService } from 'src/app/servicios/crud-educacion.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 import { ActivatedRoute } from '@angular/router';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
   selector: 'app-editar-educacion',
@@ -16,10 +17,15 @@ export class EditarEducacionComponent implements OnInit{
   previsualizacionUrl : string = "";
   fechaInicio : Date = new Date();
   fechaFin : Date = new Date();
+  usuarioActivo : boolean;
+
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
-    private crud : CRUDEducacionService, private sanitizer : DomSanitizer, private route : ActivatedRoute,){
-  
+    private crud : CRUDEducacionService, private sanitizer : DomSanitizer, private route : ActivatedRoute,
+    private autenticacion : AutenticacionService){
+      
+      this.usuarioActivo = this.autenticacion.UsuarioIniciado;
+      
   }
 
   form : FormGroup = this.formBuilder.group({});
@@ -31,9 +37,8 @@ export class EditarEducacionComponent implements OnInit{
     this.crud.onBuscar(this.id).subscribe(data => {
       this.educacion = data;
       this.previsualizacionUrl = this.educacion.urlImagen;
-
-      this.fechaInicio = new Date(this.educacion.fechaInicio);
-      this.fechaFin = new Date(this.educacion.fechaFin);
+      this.fechaInicio = this.educacion.fechaInicio;
+      this.fechaFin = this.educacion.fechaFin;
 
       this.form = this.formBuilder.group({
         nombre : [this.educacion.nombre, [Validators.required]],

@@ -10,7 +10,6 @@ export class ExtraerDatosService {
   urlPersona : string = "https://back-portfolio-cedh.onrender.com/portfolio/persona"; 
   urlTecnologia : string = "https://back-portfolio-cedh.onrender.com/portfolio/tecnologia";
   urlEducacion : string = "https://back-portfolio-cedh.onrender.com/portfolio/educacion";
-  
 
   constructor( private http : HttpClient) { }
 

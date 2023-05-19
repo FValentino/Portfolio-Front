@@ -9,17 +9,13 @@ import { map } from 'rxjs';
 export class AutenticacionService {
 
   urlInicio:string = "https://back-portfolio-cedh.onrender.com/portfolio/usuario/iniciar-sesion";
-  urlCerrar:string = "https://back-portfolio-cedh.onrender.com/portfolio/usuario/cerrar-sesion";
+  
 
 
   userSubject: BehaviorSubject<any>;
 
   constructor(private http : HttpClient ) { 
     this.userSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
-  }
-
-  get UsuarioAutenticado(){
-    return this.userSubject.value;
   }
 
   iniciarSesion (credenciales:any):Observable <any>{
@@ -32,17 +28,22 @@ export class AutenticacionService {
     }));
   }
 
-  cerrarSesion (): Observable <any>{
-    return this.http.post(this.urlCerrar, null).pipe(map(data=>{
-      
-      sessionStorage.setItem('currentUser', JSON.stringify(data));
-      this.userSubject.next(data);
-    
-      return data;
-    }));
+  cerrarSesion () : void{
+    sessionStorage.setItem('currentUser', '{}');
+    this.userSubject.next({});
+    window.location.reload();
   }
 
-  recargar() : void{
-    window.location.reload();
+  get UsuarioAutenticado(){
+    return this.userSubject.value;
+  }
+
+  get UsuarioIniciado() : boolean{
+    if (JSON.stringify(this.UsuarioAutenticado) != '{}' && JSON.stringify(this.UsuarioAutenticado) != 'null' ){
+      return true;
+    }
+    else{
+      return  false;
+    }
   }
 }

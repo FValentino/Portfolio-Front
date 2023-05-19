@@ -48,7 +48,7 @@
             <div class="mb-3">
                 <label class="form-label">Fecha de Fin</label>
                 <input type="date" formControlName="fechaFin" maxlength="10"
-                [value]="educacion.fechaFin"
+                [value]="fechaFin"
                 [ngClass]="{'is-invalid':FechaFin?.errors && FechaFin?.touched, 
                     'is-valid':!FechaFin?.errors && FechaFin?.touched}"
                 class="form-control">
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="text-center mt-3">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" [disabled]="!usuarioActivo">
                     Guardar
                 </button>
             </div>

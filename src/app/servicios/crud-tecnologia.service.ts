@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CRUDTecnologiaService {
 
-  private url : string = "https://back-portfolio-cedh.onrender.com/portfolio/tecnologia";
-
+ private url : string = "https://back-portfolio-cedh.onrender.com/portfolio/tecnologia";
+ 
   constructor(private http : HttpClient) {}
 
   onEnviar(datosTec : any) : Observable <any> {
