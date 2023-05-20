@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CRUDEducacionService } from 'src/app/servicios/crud-educacion.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class EditarEducacionComponent implements OnInit{
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
     private crud : CRUDEducacionService, private sanitizer : DomSanitizer, private route : ActivatedRoute,
-    private autenticacion : AutenticacionService){
+    private autenticacion : AutenticacionService, private ruta : Router){
       
       this.usuarioActivo = this.autenticacion.UsuarioIniciado;
       
@@ -67,6 +67,13 @@ export class EditarEducacionComponent implements OnInit{
       this.crud.recargar();
     });
 
+  }
+
+  cancelar(){
+    if (this.imagenes.url != this.previsualizacionUrl){
+      this.imagenes.borrarImagen('educacion', this.Nombre?.value);
+    }
+    this.ruta.navigate(['/educacion']);
   }
   
   get Nombre(){

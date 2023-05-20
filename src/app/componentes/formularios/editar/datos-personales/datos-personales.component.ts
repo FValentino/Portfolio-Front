@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 import { ExtraerDatosService } from 'src/app/servicios/extraer-datos.service';
 import { CRUDPersonaService } from 'src/app/servicios/crud-persona.service';
@@ -18,7 +18,7 @@ export class DatosPersonalesComponent implements OnInit{
 
   constructor(private extraerDatos : ExtraerDatosService, private crud : CRUDPersonaService, 
     private imagen : ImagenesService, private sanitizer : DomSanitizer,
-    private formBuilder : FormBuilder){
+    private formBuilder : FormBuilder, private ruta : Router){
 
   }
 
@@ -29,8 +29,6 @@ export class DatosPersonalesComponent implements OnInit{
     this.crud.onBuscar().subscribe(dato => {
       this.persona = dato;
       this.previsUrl = this.persona.urlImagen;
-
-      console.log("DATOS PERSONA: ", this.persona);
       
 
       this.form = this.formBuilder.group({
@@ -62,6 +60,13 @@ export class DatosPersonalesComponent implements OnInit{
     this.crud.onActualizar(this.form.value).subscribe(datos => {
       this.crud.recargar();
     });
+  }
+
+  cancelar(){
+    if (this.imagen.url != this.previsUrl){
+      this.imagen.borrarImagen('persona', this.Nombre?.value);
+    }
+    this.ruta.navigate(['/tecnologia']);
   }
 
 

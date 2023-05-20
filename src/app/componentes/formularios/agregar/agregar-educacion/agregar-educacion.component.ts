@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { CRUDEducacionService } from 'src/app/servicios/crud-educacion.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 
@@ -15,7 +16,8 @@ export class AgregarEducacionComponent {
   previsualizacionVis : boolean = false;
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
-              private crud : CRUDEducacionService, private sanitizer : DomSanitizer){
+              private crud : CRUDEducacionService, private sanitizer : DomSanitizer,
+              private ruta : Router){
     this.form = this.formBuilder.group({
       nombre : ['', [Validators.required]],
       titulo : ['', [Validators.required]],
@@ -42,7 +44,13 @@ export class AgregarEducacionComponent {
     this.crud.onEnviar(this.form.value).subscribe(data => {
       this.crud.recargar();
     });
+  }
 
+  cancelar(){
+    if (this.imagenes.url != ""){
+      this.imagenes.borrarImagen('persona', this.Nombre?.value);
+    }
+    this.ruta.navigate(['/tecnologia']);
   }
   
   get Nombre(){

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CRUDTecnologiaService } from 'src/app/servicios/crud-tecnologia.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 
@@ -18,7 +18,8 @@ export class EditarTecnologiaComponent implements OnInit{
   enviar : boolean = true;
   
   constructor(private crud : CRUDTecnologiaService, private route : ActivatedRoute, 
-    private imagen : ImagenesService, private sanitizer : DomSanitizer,private formBuilder : FormBuilder){
+    private imagen : ImagenesService, private sanitizer : DomSanitizer,
+    private formBuilder : FormBuilder, private ruta : Router){
 
   }
   
@@ -63,6 +64,13 @@ export class EditarTecnologiaComponent implements OnInit{
     this.crud.onActualizar(this.id , this.form.value).subscribe(data => {
       this.crud.recargar();
     });
+  }
+
+  cancelar(){
+    if (this.imagen.url != this.previsualizacionUrl){
+      this.imagen.borrarImagen('tecnologias', this.Nombre?.value);
+    }
+    this.ruta.navigate(['/tecnologia']);
   }
 
   get Nombre (){
