@@ -1,5 +1,7 @@
-# PortfolioDinamico
+# Comentarios AUTOR
+El proyecto fue desarrolado en angular, utilizando HTML, CSS, JavaScript y TypeScript. Constituye el frontend de mi portfolio personal el cual contiene informacion profesional sobre mi y los proyectos personales desarrollados.
 
+## Portfolio
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
 ## Development server
