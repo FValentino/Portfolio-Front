@@ -25,3 +25,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Comentarios AUTOR
+El proyecto fue desarrolado en angular, utilizando HTML, CSS, JavaScript y TypeScript. Constituye el frontend de mi portfolio personal el cual contendra informacion profesional sobre mi y los proyectos personales desarrollados.
