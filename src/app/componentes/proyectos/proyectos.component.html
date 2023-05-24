@@ -1,14 +1,24 @@
-<section id="projects" class="projects">
-    <div class="container" data-aos="fade-up">
-  
-      <div class="section-title">
-        <h2>Proyectos</h2>
-      </div>
-  
-      <div class="row container" data-aos="fade-up" data-aos-delay="300">
-        <div class="col-lg-4 col-md-6 filter-app">
-          <img [src]="logo.project1" class="img-fluid projects-img" alt="">
+<section id="tecnologia">    
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Proyectos</h2>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="300">
+      <div class="row justify-content-center">
+        <div class="containerImg d-flex flex-wrap justify-content-center">
+          <div *ngFor="let item of proyecto" class="Img-item filter-app mt-4">
+            <div class="text-center">
+              <div>
+                <img [src]="item.urlImagen" class="img img-fluid rounded border border-dark" alt="">
+              </div>
+              <h4>{{item.nombre}}</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 </section>
+

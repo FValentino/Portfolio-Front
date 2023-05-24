@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CRUDEducacionService } from 'src/app/servicios/crud-educacion.service';
+import { FechasService } from 'src/app/servicios/fechas.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 
 @Component({
@@ -14,17 +15,28 @@ export class AgregarEducacionComponent {
   form : FormGroup;
   previsualizacionUrl : string = "";
   previsualizacionVis : boolean = false;
+  mostrarFecha : boolean = false;
+  fechaFinal : any;
+  private fechaAux : Date = new Date;
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
               private crud : CRUDEducacionService, private sanitizer : DomSanitizer,
-              private ruta : Router){
+              private ruta : Router, private fechas : FechasService){
     this.form = this.formBuilder.group({
       nombre : ['', [Validators.required]],
-      titulo : ['', [Validators.required]],
-      fechaInicio : ['', [Validators.required]],
-      fechaFin : ['', [Validators.required]],
+      carrera: ['', [Validators.required]],
+      titulo : ['', ],
+      fechaInicio: ['', [Validators.required]],
+      fechaFin : [''],
       urlImagen : ['']
     });
+    this.fechaFinal = this.fechas.fechaFinal( this.fechaAux.getFullYear(), this.fechaAux.getMonth());
+  }
+
+  establecerFecha(){
+    this.mostrarFecha = this.fechas.fechaInicio(this.FechaInicio?.value);
+    console.log("MOSTRAR FECHA: " + this.mostrarFecha);
+    
   }
 
   cargarImagen(event : any){
@@ -57,6 +69,10 @@ export class AgregarEducacionComponent {
     return this.form.get('nombre');
   }
 
+  get Carrera(){
+    return this.form.get('carrera');
+  }
+
   get Titulo(){
     return this.form.get('titulo');
   }
@@ -68,6 +84,7 @@ export class AgregarEducacionComponent {
   get FechaFin(){
     return this.form.get('fechaFin');
   }
+
 
   private previsualizacion (event : any){
     const imagen = event.target.files[0];

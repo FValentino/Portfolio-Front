@@ -11,22 +11,22 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Titulo</th>
-                                <th scope="col">Inicio</th>
-                                <th scope="col">Finalizacion</th>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="w-25 text-center">Nombre</th>
+                                <th scope="col" class="w-25 text-center">Titulo</th>
+                                <th scope="col" class="w-25 text-center">Inicio</th>
+                                <th scope="col" class="w-25 text-center">Finalizacion</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of educacion">
                                 <th scope="row">{{item.id}}</th>
-                                <td>{{item.nombre}}</td>
-                                <td>{{item.titulo}}</td>
-                                <td>{{item.fechaInicio}}</td>
-                                <td>{{item.fechaFin}}</td>
-                                <td> <a [routerLink]="['/educacion', item.id] " >editar</a> </td>
-                                <td> <button class="btn btn-link" (click)="borrarRegistro(item)" >Borrar</button> </td>
+                                <td class="text-center">{{item.nombre}}</td>
+                                <td class="text-center">{{item.titulo}}</td>
+                                <td class="text-center">{{item.fechaInicio}}</td>
+                                <td class="text-center">{{item.fechaFin}}</td>
+                                <td> <a [routerLink]="['/editar-educacion', item.id]" class="btn btn-link">Editar</a> </td>
+                                <td> <button class="btn btn-link" (click)="borrarRegistro(item)">Borrar</button> </td>
                             </tr>
                         </tbody>
                     </table>

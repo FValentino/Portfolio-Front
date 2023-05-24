@@ -21,6 +21,7 @@ import { AgregarEducacionComponent } from './componentes/formularios/agregar/agr
 import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educacion-menu.component';
 import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
 import { EditarTecnologiaComponent } from './componentes/formularios/editar/editar-tecnologia/editar-tecnologia.component';
+import { VistaEducacionComponent } from './componentes/vistas/vista-educacion/vista-educacion.component';
 
 //Formulario
 import { ReactiveFormsModule} from '@angular/forms';
@@ -33,6 +34,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
+import { VistaProyectoComponent } from './componentes/vistas/vista-proyecto/vista-proyecto.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { EditarEducacionComponent } from './componentes/formularios/editar/edita
     EducacionMenuComponent,
     TecnologiaMenuComponent,
     EditarTecnologiaComponent,
-    EditarEducacionComponent
+    EditarEducacionComponent,
+    VistaEducacionComponent,
+    VistaProyectoComponent
   ],
   imports: [
     BrowserModule,

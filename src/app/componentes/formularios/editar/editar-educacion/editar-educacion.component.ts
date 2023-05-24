@@ -5,6 +5,7 @@ import { CRUDEducacionService } from 'src/app/servicios/crud-educacion.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+import { FechasService } from 'src/app/servicios/fechas.service';
 
 @Component({
   selector: 'app-editar-educacion',
@@ -12,19 +13,22 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./editar-educacion.component.css']
 })
 export class EditarEducacionComponent implements OnInit{
-  private id : any;
   educacion : any;
   previsualizacionUrl : string = "";
   fechaInicio : Date = new Date();
   fechaFin : Date = new Date();
   usuarioActivo : boolean;
-
+  mostrarFecha : boolean = false;
+  fechaFinal : any;
+  private fechaAux : Date = new Date;
+  private id : any;
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
     private crud : CRUDEducacionService, private sanitizer : DomSanitizer, private route : ActivatedRoute,
-    private autenticacion : AutenticacionService, private ruta : Router){
+    private autenticacion : AutenticacionService, private ruta : Router, private fechas : FechasService){
       
       this.usuarioActivo = this.autenticacion.UsuarioIniciado;
+      this.fechaFinal = this.fechas.fechaFinal( this.fechaAux.getFullYear(), this.fechaAux.getMonth());
       
   }
 
@@ -42,12 +46,20 @@ export class EditarEducacionComponent implements OnInit{
 
       this.form = this.formBuilder.group({
         nombre : [this.educacion.nombre, [Validators.required]],
-        titulo : [this.educacion.titulo, [Validators.required]],
+        carrera: [this.educacion.carrera, [Validators.required]],
+        titulo : [this.educacion.titulo],
         fechaInicio : [this.educacion.fechaInicio, [Validators.required]],
-        fechaFin : [this.educacion.fechaFin, [Validators.required]],
-        urlImagen : ['']
+        fechaFin : [this.educacion.fechaFin],
+        urlImagen : [this.educacion.urlImagen]
       });
+
+      this.mostrarFecha = this.FechaFin?.value != '';
     });
+  }
+
+  establecerFecha(){
+    this.mostrarFecha = this.fechas.fechaInicio(this.FechaInicio?.value);
+    this.habilitarBotones();
   }
 
   cargarImagen(event : any){
@@ -75,9 +87,26 @@ export class EditarEducacionComponent implements OnInit{
     }
     this.ruta.navigate(['/educacion']);
   }
+
+  habilitarBotones() : boolean{
+    let habilitar : boolean = false;
+
+    if ( this.Nombre?.value == ''){
+      habilitar = false;
+    }
+    if ( this.FechaFin?.value == '' && this.Titulo?.value != ''){
+      habilitar = false
+    }
+
+    return habilitar;
+  }
   
   get Nombre(){
     return this.form.get('nombre');
+  }
+
+  get Carrera(){
+    return this.form.get('carrera');
   }
 
   get Titulo(){

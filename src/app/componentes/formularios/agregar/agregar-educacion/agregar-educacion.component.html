@@ -20,46 +20,45 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Titulo</label>
-                    <input type="text" formControlName="titulo" maxlength="50"
-                    [ngClass]="{'is-invalid':Titulo?.errors && Titulo?.touched, 
-                        'is-valid':!Titulo?.errors && Titulo?.touched}"
+                    <label class="form-label">Carrera</label>
+                    <input type="text" formControlName="carrera" maxlength="50"
+                    [ngClass]="{'is-invalid':Carrera?.errors && Carrera?.touched, 
+                        'is-valid':!Carrera?.errors && Carrera?.touched}"
                     class="form-control">
-                    <div *ngIf="Titulo?.errors && Titulo?.touched">
-                        <p *ngIf="Titulo?.hasError('required')" class="text-danger">
-                            Titulo requerido
+                    <div *ngIf="Carrera?.errors && Carrera?.touched">
+                        <p *ngIf="Carrera?.hasError('required')" class="text-danger">
+                            Carrera requerida
                         </p>
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Titulo</label>
+                    <input type="text" formControlName="titulo" maxlength="50">
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Fecha de Inicio</label>
-                    <input type="date" formControlName="fechaInicio" maxlength="10"
+                    <input type="month" formControlName="fechaInicio" maxlength="10"
+                    class="form-control" (blur)="establecerFecha()" [max]="fechaFinal"
                     [ngClass]="{'is-invalid':FechaInicio?.errors && FechaInicio?.touched, 
                         'is-valid':!FechaInicio?.errors && FechaInicio?.touched}"
                     class="form-control">
                     <div *ngIf="FechaInicio?.errors && FechaInicio?.touched">
                         <p *ngIf="FechaInicio?.hasError('required')" class="text-danger">
-                            Fecha de inicio requerido
+                            Fecha de inicio requerida
                         </p>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" *ngIf="mostrarFecha">
                     <label class="form-label">Fecha de Fin</label>
-                    <input type="date" formControlName="fechaFin" maxlength="10"
-                    [ngClass]="{'is-invalid':FechaFin?.errors && FechaFin?.touched, 
-                        'is-valid':!FechaFin?.errors && FechaFin?.touched}"
-                    class="form-control">
-                    <div *ngIf="FechaFin?.errors && FechaFin?.touched">
-                        <p *ngIf="FechaFin?.hasError('required')" class="text-danger">
-                            Fecha de fin requerido
-                        </p>
-                    </div>
+                    <input type="month" formControlName="fechaFin" maxlength="10"
+                    class="form-control" [min]="FechaInicio?.value" [max]="fechaFinal">
                 </div>
                 <div class="mb-1">
                     <label class="form-label">Imagen</label>
                     <input type="file" accept=".jpg, .jpeg, .png" 
                     class="form-control col" (change)="cargarImagen($event)">
                 </div>
+
                 <div class="text-center mt-2" [style.visibility]="previsualizacionVis ? 'visible' : 'hidden'">
                     <div>
                         <img [src]="previsualizacionUrl"

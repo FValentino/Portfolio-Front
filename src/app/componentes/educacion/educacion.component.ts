@@ -14,9 +14,9 @@ export class EducacionComponent implements OnInit{
   constructor (private extraerDatos : ExtraerDatosService){}
 
   ngOnInit(): void {
-      this.extraerDatos.obtenerDatosEducacion().subscribe(dato => {
-        this.educacion = dato;
-      });
+    this.extraerDatos.obtenerDatosEducacion().subscribe(dato => {
+      this.educacion = dato;
+    });
   }
 
 }

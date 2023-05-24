@@ -9,6 +9,7 @@ import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educac
 import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
 import { EditarTecnologiaComponent } from './componentes/formularios/editar/editar-tecnologia/editar-tecnologia.component';
 import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
+import { VistaEducacionComponent } from './componentes/vistas/vista-educacion/vista-educacion.component';
 
 const routes: Routes = [
   {path:'portfolio', component:PortfolioComponent},
@@ -18,8 +19,9 @@ const routes: Routes = [
   {path:'agregar-educacion', component: AgregarEducacionComponent},
   {path:'educacion', component: EducacionMenuComponent},
   {path:'tecnologia', component: TecnologiaMenuComponent},
-  {path:'tecnologia/:id', component: EditarTecnologiaComponent},
-  {path:'educacion/:id', component: EditarEducacionComponent},
+  {path:'educacion/:id', component: VistaEducacionComponent},
+  {path:'editar-tecnologia/:id', component: EditarTecnologiaComponent},
+  {path:'editar-educacion/:id', component: EditarEducacionComponent},
   {path:'', redirectTo:'portfolio', pathMatch:'full'}
 ];
 

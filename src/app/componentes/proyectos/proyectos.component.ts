@@ -8,12 +8,14 @@ import { ExtraerDatosService } from 'src/app/servicios/extraer-datos.service';
 })
 export class ProyectosComponent implements OnInit{
 
-  logo : any
+  proyecto: any
 
   constructor (private datos : ExtraerDatosService) {}
 
   ngOnInit(): void {
-  
+    this.datos.obtenerDatosProyecto().subscribe(datos => {
+      this.proyecto = datos;
+    });
   }
 
 }

@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<section class="contenedor bg-formularios">
+    <div class="container">
+        <div class="section-title mt-3">
+            <h2>{{educacion.nombre}}</h2>
+        </div>
+        <div class="justify-content-center d-flex">
+            <div>
+                <img [src]="educacion.urlImagen" class="img-fluid rounded border border-dark" alt="">
+            </div>
+            <div>
+                <table class="mt-4 ms-3">
+                    <tr>
+                        <td class="fw-bold">Carrera </td>
+                        <td class="text-center ms-3">{{educacion.carrera}}</td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td class="fw-bold">Titulo</td>
+                        <td class="text-center ms-3">{{titulo}}</td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td class="fw-bold">Fecha de inicio</td>
+                        <td class="text-center ms-3">{{educacion.fechaInicio}}</td>
+                    </tr>
+                    <br>
+                    <tr >
+                        <td class="fw-bold">Fecha de fin</td>
+                        <td class="text-center ms-3">{{fin}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
