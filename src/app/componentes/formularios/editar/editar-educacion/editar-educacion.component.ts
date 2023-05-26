@@ -20,6 +20,7 @@ export class EditarEducacionComponent implements OnInit{
   usuarioActivo : boolean;
   mostrarFecha : boolean = false;
   fechaFinal : any;
+  botonActivo : boolean = false;
   private fechaAux : Date = new Date;
   private id : any;
 
@@ -59,7 +60,7 @@ export class EditarEducacionComponent implements OnInit{
 
   establecerFecha(){
     this.mostrarFecha = this.fechas.fechaInicio(this.FechaInicio?.value);
-    this.habilitarBotones();
+    this.activarBoton();
   }
 
   cargarImagen(event : any){
@@ -69,10 +70,17 @@ export class EditarEducacionComponent implements OnInit{
 
   actualizarRegistro(event : any){
 
+    let imagenUrl : string = this.educacion.urlImagen;
+
     event.preventDefault();
 
+    if(this.imagenes.url != "" && this.imagenes.url != this.educacion.urlImagen){
+      
+      imagenUrl = this.imagenes.url;
+    }
+
     this.form.patchValue({
-      urlImagen : this.imagenes.url
+      urlImagen : imagenUrl
     });
 
     this.crud.onActualizar(this.id, this.form.value).subscribe(data => {
@@ -88,17 +96,23 @@ export class EditarEducacionComponent implements OnInit{
     this.ruta.navigate(['/educacion']);
   }
 
-  habilitarBotones() : boolean{
-    let habilitar : boolean = false;
+  activarBoton(){
 
     if ( this.Nombre?.value == ''){
-      habilitar = false;
+      this.botonActivo = true;
     }
-    if ( this.FechaFin?.value == '' && this.Titulo?.value != ''){
-      habilitar = false
+    else if ( this.Carrera?.value == ''){
+      this.botonActivo = true;
     }
-
-    return habilitar;
+    else if (this.Titulo?.value != '' && this.FechaFin?.value == ''){
+      this.botonActivo = true;
+    }
+    else if (this.Titulo?.value == '' && this.FechaFin?.value != ''){
+      this.botonActivo = true;
+    }
+    else{
+      this.botonActivo = false;
+    }
   }
   
   get Nombre(){

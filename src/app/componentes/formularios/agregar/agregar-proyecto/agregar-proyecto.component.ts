@@ -2,77 +2,77 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { CRUDTecnologiaService } from 'src/app/servicios/crud-tecnologia.service';
+import { CRUDProyectoService } from 'src/app/servicios/crud-proyecto.service';
 import { ImagenesService } from 'src/app/servicios/imagenes.service';
 
 @Component({
-  selector: 'app-agregar-tecnologia',
-  templateUrl: './agregar-tecnologia.component.html',
-  styleUrls: ['./agregar-tecnologia.component.css']
+  selector: 'app-agregar-proyecto',
+  templateUrl: './agregar-proyecto.component.html',
+  styleUrls: ['./agregar-proyecto.component.css']
 })
-
-export class AgregarTecnologiaComponent {
+export class AgregarProyectoComponent {
 
   form : FormGroup;
-  previsualizacionUrl : string = "";
+  previsualizacionUrl : any;
   previsualizacionVis : boolean = false;
   botonActivo : boolean = true;
 
-  constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
-              private crud : CRUDTecnologiaService, private sanitizer : DomSanitizer,
-              private ruta : Router){
-      
-      
-    
-    this.form = this.formBuilder.group({
-      nombre : ['', [Validators.required]],
-      urlImagen : ['']
-    });
-  }
+  constructor (private formBuilder : FormBuilder, private imagen : ImagenesService,
+      private sanitizer : DomSanitizer, private ruta : Router, private crud : CRUDProyectoService){
 
-  cargarImagen(event : any){
-    this.previsualizacionVis = true;
-    this.previsualizacion(event);
-    this.imagenes.cargarImagen(event, 'tecnologias', this.NombreValue);
+    this.form = this.formBuilder.group({
+      nombre: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
+      urlProyecto: ['', [Validators.required]],
+      urlImagen: ['']
+    });
   } 
 
-  onEnviar(event : any){
+  cargarImagen(event : any){
+    this.previsualizacion(event);
+    this.previsualizacionVis = true;
+    this.imagen.cargarImagen(event, 'proyectos', this.Nombre?.value);
+  }
 
+  activarBoton(){
+    if (this.Nombre?.value != "" && this.Descripcion?.value != "" && this.UrlProyecto?.value != ""){ 
+      this.botonActivo = false; 
+    }else{
+      this.botonActivo = true;
+    }
+  }
+
+  onEnviar(event : any){
     event.preventDefault();
 
     this.form.patchValue({
-      urlImagen : this.imagenes.url
+      urlImagen : this.imagen.url
     });
 
     this.crud.onEnviar(this.form.value).subscribe(data => {
       this.crud.recargar();
     });
-
-  }
-
-  activarBoton(){
-    if (this.Nombre?.value != ""){
-      this.botonActivo = false;
-    } else{
-      this.botonActivo = true;
-    }
   }
 
   cancelar(){
-    if (this.imagenes.url != ""){
-      this.imagenes.borrarImagen('tecnologias', this.Nombre?.value);
+    if (this.imagen.url != ""){
+      this.imagen.borrarImagen('proyecto', this.Nombre?.value);
     }
-    this.ruta.navigate(['/tecnologia']);
+    this.ruta.navigate(['/proyecto']);
   }
 
-  get NombreValue(){
-    return this.form.get('nombre')?.value;
-  } 
-  
-  get Nombre(){
+  get Nombre (){
     return this.form.get('nombre');
   }
 
+  get Descripcion (){
+    return this.form.get('descripcion');
+  }
+
+  get UrlProyecto (){
+    return this.form.get('urlProyecto');
+  }
+  
   private previsualizacion (event : any){
     const imagen = event.target.files[0];
     this.extraerBase64(imagen).then(( img : any )=>{
@@ -100,4 +100,5 @@ export class AgregarTecnologiaComponent {
       return null;
     }
   });
+  
 }

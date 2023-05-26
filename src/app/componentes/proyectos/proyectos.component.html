@@ -1,4 +1,4 @@
-<section id="tecnologia">    
+<section id="proyectos">    
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
@@ -10,9 +10,9 @@
         <div class="containerImg d-flex flex-wrap justify-content-center">
           <div *ngFor="let item of proyecto" class="Img-item filter-app mt-4">
             <div class="text-center">
-              <div>
+              <a [routerLink]="['/proyecto', item.id] " >
                 <img [src]="item.urlImagen" class="img img-fluid rounded border border-dark" alt="">
-              </div>
+              </a>
               <h4>{{item.nombre}}</h4>
             </div>
           </div>

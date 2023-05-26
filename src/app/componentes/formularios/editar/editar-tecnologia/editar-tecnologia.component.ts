@@ -15,7 +15,7 @@ export class EditarTecnologiaComponent implements OnInit{
   private id : any;
   previsualizacionUrl : string = "";
   tecnologia : any;
-  enviar : boolean = true;
+  botonActivo : boolean = false;
   
   constructor(private crud : CRUDTecnologiaService, private route : ActivatedRoute, 
     private imagen : ImagenesService, private sanitizer : DomSanitizer,
@@ -46,11 +46,11 @@ export class EditarTecnologiaComponent implements OnInit{
   }
 
   verificar(){
-    if (this.Nombre?.value){
-      this.enviar = true;
+    if (this.Nombre?.value != ""){
+      this.botonActivo = false;
     }
     else{
-      this.enviar = false;
+      this.botonActivo = true;
     }
   }
   

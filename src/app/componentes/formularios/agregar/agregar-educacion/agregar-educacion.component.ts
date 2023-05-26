@@ -17,6 +17,7 @@ export class AgregarEducacionComponent {
   previsualizacionVis : boolean = false;
   mostrarFecha : boolean = false;
   fechaFinal : any;
+  botonActivo : boolean = true;
   private fechaAux : Date = new Date;
 
   constructor(private imagenes : ImagenesService, private formBuilder : FormBuilder, 
@@ -45,6 +46,25 @@ export class AgregarEducacionComponent {
     this.imagenes.cargarImagen(event, 'educacion', this.Nombre?.value);
   } 
 
+  activarBoton(){
+
+    if ( this.Nombre?.value == ''){
+      this.botonActivo = true;
+    }
+    else if ( this.Carrera?.value == ''){
+      this.botonActivo = true;
+    }
+    else if (this.Titulo?.value != '' && this.FechaFin?.value == ''){
+      this.botonActivo = true;
+    }
+    else if (this.Titulo?.value == '' && this.FechaFin?.value != ''){
+      this.botonActivo = true;
+    }
+    else{
+      this.botonActivo = false;
+    }
+  }
+
   onEnviar(event : any){
 
     event.preventDefault();
@@ -60,9 +80,9 @@ export class AgregarEducacionComponent {
 
   cancelar(){
     if (this.imagenes.url != ""){
-      this.imagenes.borrarImagen('persona', this.Nombre?.value);
+      this.imagenes.borrarImagen('educacion', this.Nombre?.value);
     }
-    this.ruta.navigate(['/tecnologia']);
+    this.ruta.navigate(['/educacion']);
   }
   
   get Nombre(){

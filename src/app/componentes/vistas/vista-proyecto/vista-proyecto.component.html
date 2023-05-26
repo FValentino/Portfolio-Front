@@ -8,10 +8,11 @@
             </div>
             <h2>{{proyecto.nombre}}</h2>
         </div>
-        <div class="justify-content-center d-flex">
-            <p> {{proyecto.descripcion}} </p>
-            
-            <a [href]="proyecto.urlProyecto">Github del proyecto</a>
+        <div class="container w-50 h-50">
+            <div class="justify-content-center">
+                <p> {{proyecto.descripcion}} </p>
+                <a [href]="proyecto.urlProyecto" class="mt-5">Github del proyecto</a>
+            </div>
         </div>
     </div>
 </section>

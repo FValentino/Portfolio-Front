@@ -9,7 +9,6 @@ import { ExtraerDatosService } from 'src/app/servicios/extraer-datos.service';
 export class EducacionComponent implements OnInit{
 
   educacion : any;
-  educacionUrl : string = "../../../";
 
   constructor (private extraerDatos : ExtraerDatosService){}
 

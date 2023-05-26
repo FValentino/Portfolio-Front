@@ -22,6 +22,11 @@ import { EducacionMenuComponent } from './componentes/menu/educacion-menu/educac
 import { TecnologiaMenuComponent } from './componentes/menu/tecnologia-menu/tecnologia-menu.component';
 import { EditarTecnologiaComponent } from './componentes/formularios/editar/editar-tecnologia/editar-tecnologia.component';
 import { VistaEducacionComponent } from './componentes/vistas/vista-educacion/vista-educacion.component';
+import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
+import { VistaProyectoComponent } from './componentes/vistas/vista-proyecto/vista-proyecto.component';
+import { EditarProyectoComponent } from './componentes/formularios/editar/editar-proyecto/editar-proyecto.component';
+import { AgregarProyectoComponent } from './componentes/formularios/agregar/agregar-proyecto/agregar-proyecto.component';
+import { ProyectoMenuComponent } from './componentes/menu/proyecto-menu/proyecto-menu.component';
 
 //Formulario
 import { ReactiveFormsModule} from '@angular/forms';
@@ -33,8 +38,7 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { EditarEducacionComponent } from './componentes/formularios/editar/editar-educacion/editar-educacion.component';
-import { VistaProyectoComponent } from './componentes/vistas/vista-proyecto/vista-proyecto.component';
+
 
 
 @NgModule({
@@ -58,7 +62,10 @@ import { VistaProyectoComponent } from './componentes/vistas/vista-proyecto/vist
     EditarTecnologiaComponent,
     EditarEducacionComponent,
     VistaEducacionComponent,
-    VistaProyectoComponent
+    VistaProyectoComponent,
+    EditarProyectoComponent,
+    AgregarProyectoComponent,
+    ProyectoMenuComponent
   ],
   imports: [
     BrowserModule,

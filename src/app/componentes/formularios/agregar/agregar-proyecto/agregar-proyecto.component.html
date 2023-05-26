@@ -3,7 +3,7 @@
 <section class="bg-formularios">
     <div class="container">
         <div class="section-title">
-            <h1> AGREGAR EDUCACION </h1>
+            <h1> AGREGAR PROYECTO </h1>
         </div>
         <div class="container">
             <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
@@ -15,44 +15,35 @@
                     class="form-control" (blur)="activarBoton()">
                     <div *ngIf="Nombre?.errors && Nombre?.touched">
                         <p *ngIf="Nombre?.hasError('required')" class="text-danger">
-                        Nombre requerido
+                            Nombre requerido
                         </p>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Carrera</label>
-                    <input type="text" formControlName="carrera" maxlength="50"
-                    [ngClass]="{'is-invalid':Carrera?.errors && Carrera?.touched, 
-                        'is-valid':!Carrera?.errors && Carrera?.touched}"
+                    <label class="form-label">Descripcion</label>
+                    <input type="text" formControlName="descripcion" 
+                    [ngClass]="{'is-invalid':Descripcion?.errors && Descripcion?.touched, 
+                        'is-valid':!Descripcion?.errors && Descripcion?.touched}"
                     class="form-control" (blur)="activarBoton()">
-                    <div *ngIf="Carrera?.errors && Carrera?.touched">
-                        <p *ngIf="Carrera?.hasError('required')" class="text-danger">
-                            Carrera requerida
+                    <div *ngIf="Descripcion?.errors && Descripcion?.touched">
+                        <p *ngIf="Descripcion?.hasError('required')" class="text-danger">
+                            Descripcion requerido
                         </p>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Titulo</label>
-                    <input type="text" formControlName="titulo" maxlength="50">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Fecha de Inicio</label>
-                    <input type="month" formControlName="fechaInicio" maxlength="10"
-                    class="form-control" (blur)="establecerFecha()" [max]="fechaFinal"
-                    [ngClass]="{'is-invalid':FechaInicio?.errors && FechaInicio?.touched, 
-                        'is-valid':!FechaInicio?.errors && FechaInicio?.touched}"
-                    class="form-control">
-                    <div *ngIf="FechaInicio?.errors && FechaInicio?.touched">
-                        <p *ngIf="FechaInicio?.hasError('required')" class="text-danger">
-                            Fecha de inicio requerida
+                    <label class="form-label">Repositorio</label>
+                    <input type="text" formControlName="urlProyecto"
+                    [ngClass]="{'is-invalid':UrlProyecto?.errors && UrlProyecto?.touched, 
+                        'is-valid':!UrlProyecto?.errors && UrlProyecto?.touched}"
+                    class="form-control" (blur)="activarBoton()">
+                    <div *ngIf="UrlProyecto?.errors && UrlProyecto?.touched">
+                        <p *ngIf="UrlProyecto?.hasError('required')" class="text-danger">
+                            UrlProyecto requerido
                         </p>
                     </div>
                 </div>
-                <div class="mb-3" *ngIf="mostrarFecha">
-                    <label class="form-label">Fecha de Fin</label>
-                    <input type="month" formControlName="fechaFin" maxlength="10"
-                    class="form-control" [min]="FechaInicio?.value" [max]="fechaFinal">
-                </div>
+                
                 <div class="mb-1">
                     <label class="form-label">Imagen</label>
                     <input type="file" accept=".jpg, .jpeg, .png" 
@@ -81,5 +72,6 @@
         </div>
     </div>
 </section>
+
 
 
